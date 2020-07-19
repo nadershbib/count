@@ -14,18 +14,6 @@ var reset = new Audio();
 reset.src="reset.mp3";
 
 
-function preventZoom(e) {
-  var t2 = e.timeStamp;
-  var t1 = e.currentTarget.dataset.lastTouch || t2;
-  var dt = t2 - t1;
-  var fingers = e.touches.length;
-  e.currentTarget.dataset.lastTouch = t2;
-
-  if (!dt || dt > 500 || fingers > 1) return; // not double-tap
-
-  e.preventDefault();
-  e.target.click();
-}
 
 
 document.addEventListener("keyup",(event)=>{
@@ -57,7 +45,7 @@ btn3.addEventListener("click",()=>{
     count.textContent=x;
     if(x==5 && y==0){
         alertz.play();
-        alert("Tip: You can increment using arrow up and decrement using arrow down.");
+         Swal.fire("Tip: You can increment using arrow up and decrement using arrow down.");
         y++;
         
     }
@@ -70,13 +58,19 @@ btn1.addEventListener("click",()=>{
         return "";
     }
     reset.play();
-   if(confirm("Are you sure you want to reset your count?")==true){
-       
-        x=0;
-        count.textContent=x;
-   }
-   else{
-       return "";
-   }
+    Swal.fire({
+        title: 'Are you sure you want to reset your count?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Okay'
+      }).then((result) => {
+        if (result.value) {
+          x=0;
+          count.textContent=x;
+        }
+      })
 });
 
