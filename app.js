@@ -44,7 +44,7 @@ btn3.addEventListener("click",()=>{
     count.textContent=x;
     if(x==5 && y==0){
         alertz.play();
-        alert("Tip: You can increment using arrow up and decrement using arrow down, and if you are using your phone you can use volume up for incrementing.");
+        alert("Tip: You can increment using arrow up and decrement using arrow down.");
         y++;
         
     }
