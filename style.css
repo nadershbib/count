@@ -9,11 +9,6 @@ body{
     display: flex;
     height: 100vh;
     justify-content: center;
-    
-  background: url("SPACEZ.jpg") no-repeat center center fixed;
-  background-size: cover;
-  
-
 }
 
 .background-wrap{
